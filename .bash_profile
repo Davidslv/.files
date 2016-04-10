@@ -4,7 +4,6 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # Load the necessary shell dotfiles
-# path,bash_prompt,exports,aliases,functions,extra
 for file in ~/.{aliases,govuk,osx}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
