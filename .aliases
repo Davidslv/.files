@@ -8,6 +8,7 @@ alias rc="rails c"
 alias r="rails"
 alias ss="git pow"
 alias gs="git show"
-alias vmup="cd ~/govuk/govuk-puppet/development-vm/ && vagrant up"
-alias vm="cd ~/govuk/govuk-puppet/development-vm/ && vagrant ssh"
-alias ls="ls -laF -G"
+
+function lx {
+  ls -laF -G
+}
