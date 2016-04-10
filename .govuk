@@ -1,0 +1,38 @@
+function vm_directory {
+  cd ~/govuk/govuk-puppet/development-vm/
+}
+
+function vm {
+  if [[ $OSTYPE == darwin* ]] ; then
+     vm_directory && vagrant ssh
+  else
+    echo "Sorry, you are already inside vagrant."
+  fi;
+}
+
+function vmup {
+  if [[ $OSTYPE == darwin* ]] ; then
+     vm_directory && vagrant up
+  else
+    echo "Sorry, you are already inside vagrant."
+  fi;
+}
+
+function govuk {
+  if [[ $OSTYPE == darwin* ]] ; then
+    cd ~/govuk/$1
+  else
+    cd /var/govuk/$1
+  fi;
+}
+
+function development {
+  cd /var/govuk/development
+}
+
+function mongoup {
+  sudo rm /var/lib/mongodb/mongod.lock && sudo service mongodb start
+}
+
+# boxen
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh

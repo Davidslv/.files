@@ -1,0 +1,80 @@
+[user]
+	name  = David Silva
+	email = david.silva@digital.cabinet-office.gov.uk
+[github]
+  user = davidslv
+[color]
+  status = auto
+  diff   = auto
+  branch = auto
+  interactive = auto
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+[color "status"]
+  added     = yellow
+  changed   = green
+  untracked = cyan
+[alias]
+  show = show --format=medium
+  pr = pull-request
+  br = branch
+  df = diff
+  lg = log -p
+  st = status -sb
+  ci = commit
+  co = checkout
+  staged   = diff --cached
+  unstaged = diff
+  both     = diff HEAD
+  logline  = log --pretty=oneline
+  amend    = commit --amend
+  plre     = pull --rebase
+  unstage  = reset HEAD
+  last     = log -p -n1
+  today    = log --since='1 Day Ago'
+  recent   = log --stat --since='3 Hours Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+  me       = log --author='David Silva'
+  ctags    = !.git/hooks/ctags
+  lol      = log --pretty=oneline --abbrev-commit --graph --decorate
+  files    = show --pretty="format:" --name-only
+	pow      = grep --break --heading --line-number --color=always
+  medium   = show --format=medium
+  merged-branches = git log --merges --oneline origin/master ^`git tag | grep 'production' | tail -1`
+  prune-remotes   = remote prune origin
+  delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
+[format]
+  # git log uses --pretty format by default, so this changes the default
+  # e.g. 4436819 [23 hours ago] (Gabe Berke-Williams) One line prompt
+  pretty = %C(yellow)%h %Cgreen[%cr] %C(magenta)(%an) %C(bold white)%s %Creset\n%b
+[help]
+  autocorrect = 1
+[merge]
+  tool = opendiff
+[apply]
+  whitespace = nowarn
+[push]
+  # push current branch even if you've never pushed it before
+  default = current
+[heroku]
+  account = personal
+[mergetool]
+  keepBackup = false
+[grep]
+  lineNumber = true
+
+[hub]
+protocol = https
+host = github.gds
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
