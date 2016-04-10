@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+
+# reference: ~/.osx — https://mths.be/osx
+
+if [[ $OSTYPE == darwin* ]] ; then
+  echo "Oh! You using OSX operative system, let's be friends!"
+
+  # Ask for the administrator password upfront
+  sudo -v
+
+  # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+  while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+  done 2>/dev/null &
+
+  # Always show scrollbars
+  defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+  # Possible values: `WhenScrolling`, `Automatic` and `Always`
+
+  #############################################################################
+  # Screen                                                                    #
+  #############################################################################
+
+  # Require password immediately after sleep or screen saver begins
+  defaults write com.apple.screensaver askForPassword -int 1
+  defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+  # Save screenshots to the desktop
+  # defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+  # Show icons for hard drives, servers, and removable media on the desktop
+  defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+  defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+  defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+  defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+  # Finder: show hidden files by default
+  defaults write com.apple.finder AppleShowAllFiles -bool true
+
+  # Finder: show all filename extensions
+  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+  # Finder: show status bar
+  defaults write com.apple.finder ShowStatusBar -bool true
+
+  # Finder: show path bar
+  defaults write com.apple.finder ShowPathbar -bool true
+
+  # Disable the warning when changing a file extension
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+  # Disable the warning before emptying the Trash
+  defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+  # Show the ~/Library folder
+  chflags nohidden ~/Library
+
+
+  #############################################################################
+  # Dock, Dashboard, and hot corners                                          #
+  #############################################################################
+
+  # Enable highlight hover effect for the grid view of a stack (Dock)
+  defaults write com.apple.dock mouse-over-hilite-stack -bool true
+
+  # Set the icon size of Dock items to 36 pixels
+  defaults write com.apple.dock tilesize -int 36
+
+  # Change minimize/maximize window effect
+  defaults write com.apple.dock mineffect -string "scale"
+
+  # Minimize windows into their application’s icon
+  defaults write com.apple.dock minimize-to-application -bool true
+
+  # Automatically hide and show the Dock
+  defaults write com.apple.dock autohide -bool true
+
+  # Hot corners
+  # Possible values:
+  #  0: no-op
+  #  2: Mission Control
+  #  3: Show application windows
+  #  4: Desktop
+  #  5: Start screen saver
+  #  6: Disable screen saver
+  #  7: Dashboard
+  # 10: Put display to sleep
+  # 11: Launchpad
+  # 12: Notification Center
+
+  # Top left screen corner → Mission Control
+  defaults write com.apple.dock wvous-tl-corner -int 10
+  defaults write com.apple.dock wvous-tl-modifier -int 0
+
+  # # Top right screen corner → Desktop
+  defaults write com.apple.dock wvous-tr-corner -int 4
+  defaults write com.apple.dock wvous-tr-modifier -int 0
+
+  # Bottom left screen corner → Start screen saver
+  # defaults write com.apple.dock wvous-bl-corner -int 5
+  # defaults write com.apple.dock wvous-bl-modifier -int 0
+
+  #############################################################################
+  # Photos                                                                    #
+  #############################################################################
+
+  # Prevent Photos from opening automatically when devices are plugged in
+  defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+  #############################################################################
+  # Messages                                                                  #
+  #############################################################################
+
+  # Disable continuous spell checking
+  defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
+  echo "Done. Please restart so all changes take effect."
+else
+  echo 'System is no OSX, skipping osx defaults'
+fi
