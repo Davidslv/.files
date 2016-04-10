@@ -118,5 +118,5 @@ if [[ $OSTYPE == darwin* ]] ; then
 
   echo "Done. Please restart so all changes take effect."
 else
-  echo 'System is no OSX, skipping osx defaults'
+  echo 'System is not OSX, skipping osx configuration'
 fi

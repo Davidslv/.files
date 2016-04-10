@@ -11,3 +11,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
 	source ~/.bash_profile;
 fi;
+
+read -p "Would you like to change your OSX configuration? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	source ~/.osx
+fi;
