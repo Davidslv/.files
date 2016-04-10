@@ -6,6 +6,7 @@ fi
 # Load the necessary shell dotfiles
 # path,bash_prompt,exports,aliases,functions,extra
 for file in ~/.{aliases,govuk,osx}; do
+  echo $file;
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
