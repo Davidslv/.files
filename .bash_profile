@@ -6,7 +6,6 @@ fi
 # Load the necessary shell dotfiles
 # path,bash_prompt,exports,aliases,functions,extra
 for file in ~/.{aliases,govuk,osx}; do
-  echo $file;
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -67,6 +66,12 @@ function set_bash_prompt {
   # HH:MM
   time='\A'
   username="$(git config github.user)"
+
+  if [[ $OSTYPE == darwin* ]] ; then
+    PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
+  else
+    PS1="$GRAY$time$LIGHT_RED [DEV] @$username $WHITE\w$GIT $COLOR_NONE\$ "
+  fi
 
   PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
   PS2='> '
