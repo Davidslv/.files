@@ -62,18 +62,14 @@ function set_bash_prompt {
     GIT=''
   fi
 
-  # HH:MM
-  time='\A'
   username="$(git config github.user)"
 
-  if [[ $OSTYPE == darwin* ]] ; then
-    PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
+  # identify when using vagrant VM
+  if [[ $OSTYPE == linux* && $(whoami) -eq vagrant ]] ; then
+    PS1="$GRAY\A $LIGHT_RED[\h] \[$(tput setaf 6)\]\W$GIT\[$(tput sgr0)\]]\\$ "
   else
-    PS1="$GRAY$time$LIGHT_RED [DEV-VM] $WHITE\w$GIT $COLOR_NONE\$ "
+    PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
   fi
-
-  PS2='> '
-  PS4='+ '
 }
 
 # set the prompt
