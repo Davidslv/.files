@@ -8,7 +8,4 @@ alias rc="rails c"
 alias r="rails"
 alias ss="git pow"
 alias gs="git show"
-
-function lx {
-  ls -laF -G
-}
+alias ls="ls -laFG"

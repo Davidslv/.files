@@ -4,7 +4,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # Load the necessary shell dotfiles
-for file in ~/.{aliases,govuk,osx}; do
+for file in ~/.{aliases,govuk}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -69,10 +69,9 @@ function set_bash_prompt {
   if [[ $OSTYPE == darwin* ]] ; then
     PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
   else
-    PS1="$GRAY$time$LIGHT_RED [DEV] @$username $WHITE\w$GIT $COLOR_NONE\$ "
+    PS1="$GRAY$time$LIGHT_RED [DEV-VM] $WHITE\w$GIT $COLOR_NONE\$ "
   fi
 
-  PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
   PS2='> '
   PS4='+ '
 }
