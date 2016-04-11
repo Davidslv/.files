@@ -33,7 +33,7 @@ make a release once I'm happy and sure that the functionality is working.
 ## Roadmap
 
 - Prompt for github information and dynamically add it to [.gitconfig](.gitconfig).
-- Find a way of autocomplete [govuk][.govuk#L21] function to recommend a directory.
+- Find a way of autocomplete [govuk](.govuk#L21) function to recommend a directory.
 - Find some extra inspiration by reading http://linux.101hacks.com/
 - I want to run bowler from anywhere (similar to vm/vmup)
 - I want to run scripts from development directory from anywhere
