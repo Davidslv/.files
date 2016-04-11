@@ -1,3 +1,20 @@
+function replicate {
+  development replication
+
+  read -p "Would you like to remove backups? (y/n) " -n 1;
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "deleting your local backups..."
+    rm -rf backups
+  fi;
+
+  ./replicate-data-local.sh
+}
+
+function bowlme {
+  development && bowl $@
+}
+
 function vm_directory {
   cd ~/govuk/govuk-puppet/development-vm/
 }
@@ -27,7 +44,7 @@ function govuk {
 }
 
 function development {
-  cd /var/govuk/development
+  cd /var/govuk/development/$1
 }
 
 function mongoup {

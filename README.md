@@ -26,18 +26,16 @@ So you followed my instructions and something did go wrong, maybe I pushed
 something that was not working the way I intended and you happen to get an unstable version.
 
 Sorry about that, but bear with me, I do have a solution for you, if that ever happens,
-please check the latest [stable release](https://github.com/Davidslv/.files/releases/tag/v1.0),
+please check the latest [stable release](https://github.com/Davidslv/.files/releases/latest),
 my promise is that I will update master as many times as necessary, but I will only
 make a release once I'm happy and sure that the functionality is working.
 
 ## Roadmap
 
-- Prompt for github information and dynamically add it to [.gitconfig](.gitconfig).
+- Dinamically add github name, user and email to [.gitconfig](.gitconfig).
 - Find a way of autocomplete [govuk](.govuk#L21) function to recommend a directory.
 - Find some extra inspiration by reading http://linux.101hacks.com/
-- I want to run bowler from anywhere (similar to vm/vmup)
 - I want to run scripts from development directory from anywhere
-- I want to replicate db backups every Monday
 - I want to support Linux/Unix system more, not be only dependent on OSX.
 
 ## License
