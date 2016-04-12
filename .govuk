@@ -8,7 +8,9 @@ function replicate {
     rm -rf backups
   fi;
 
-  ./replicate-data-local.sh
+  read -r -p "Your username: " username;
+  echo ""
+  ./replicate-data-local.sh -F ../ssh_config -u $username
 }
 
 function bowlme {
