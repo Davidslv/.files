@@ -66,7 +66,7 @@ function set_bash_prompt {
 
   # identify when using vagrant VM
   if [[ $OSTYPE == linux* && $(whoami) -eq vagrant ]] ; then
-    PS1="$GRAY\A $LIGHT_RED[\h] \[$(tput setaf 6)\]\W$GIT\[$(tput sgr0)\]]\\$ "
+    PS1="$GRAY\A $LIGHT_RED[\h] \[$(tput setaf 6)\]\W$GIT\[$(tput sgr0)\] \\$ "
   else
     PS1="$GRAY$time$LIGHT_RED @$username $WHITE\w$GIT $COLOR_NONE\$ "
   fi
@@ -78,6 +78,5 @@ PROMPT_COMMAND=set_bash_prompt
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-# [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+# require rbenv
+eval "$(rbenv init -)"
