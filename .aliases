@@ -8,4 +8,9 @@ alias rc="rails c"
 alias r="rails"
 alias ss="git pow"
 alias gs="git show"
-alias ls="ls -laFG"
+
+if [[ $OSTYPE =~ darwin* ]] ; then
+  alias ls="ls -laFG"
+else
+  alias ls="ls -al --color"
+fi;
