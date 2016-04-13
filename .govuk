@@ -1,20 +1,33 @@
 function replicate {
-  development replication
+  if [[ $OSTYPE == darwin* ]] ; then
+    echo "You are not inside vagrant to run this command."
+  else
+    development replication
 
-  read -p "Would you like to remove backups? (y/n) " -n 1;
-  echo ""
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "deleting your local backups..."
-    rm -rf backups
+    read -p "Would you like to remove backups? (y/n) " -n 1;
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      echo "deleting your local backups..."
+      rm -rf backups
+    fi;
+
+    read -r -p "Your username: " username;
+    echo ""
+    ./replicate-data-local.sh -F ../ssh_config -u $username
   fi;
-
-  read -r -p "Your username: " username;
-  echo ""
-  ./replicate-data-local.sh -F ../ssh_config -u $username
 }
 
+# usage: bowlme www whitehall
+#
+# when finished, you can go back to your previous directory
+# by typing `cd -`
 function bowlme {
-  development && bowl $@
+  if [[ pwd -eq vm_directory ]] ; then
+    development && bowl $@
+  else
+    OLDPWD=$(pwd)
+    development && bowl $@
+  fi;
 }
 
 function vm_directory {
@@ -46,7 +59,11 @@ function govuk {
 }
 
 function development {
-  cd /var/govuk/development/$1
+  if [[ $OSTYPE == darwin* ]] ; then
+    cd ~/govuk/development/$1
+  else
+    cd /var/govuk/development/$1
+  fi;
 }
 
 function mongoup {
