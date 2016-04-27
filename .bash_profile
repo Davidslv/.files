@@ -5,7 +5,7 @@ fi
 
 # Load the necessary shell dotfiles
 for file in ~/.{aliases,govuk}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 

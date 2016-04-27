@@ -10,7 +10,7 @@ alias ss="git pow"
 alias gs="git show"
 
 if [[ $OSTYPE =~ darwin* ]] ; then
-  alias ls="ls -laFG"
+  alias lg="ls -laFG"
 else
-  alias ls="ls -al --color"
+  alias ls="ls -alh --color"
 fi;
