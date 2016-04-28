@@ -60,10 +60,6 @@ function govuk {
 }
 
 # function to autocomplete govuk directory
-# 
-# TODO: Improve performance under OSX, the reason it's so slow is because
-#  OSX doesn't support `dir` command, so I had to find a different hack,
-#  hopefully someone with more knowledge can help this
 _govuk() {
   local cur prev opts
   COMPREPLY=()
@@ -72,7 +68,7 @@ _govuk() {
   prev="${COMP_WORDS[COMP_CWORD-1]}"
 
   if [[ $OSTYPE == darwin* ]] ; then
-    opts=$(find ~/govuk -type d -depth 1 | sed 's@.*/@@')
+    opts=$(ls ~/govuk)
   else
     opts=$(dir /var/govuk)
   fi;

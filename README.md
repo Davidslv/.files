@@ -33,7 +33,6 @@ make a release once I'm happy and sure that the functionality is working.
 ## Roadmap
 
 - Dinamically add github name, user and email to [.gitconfig](.gitconfig).
-- **Improve** OSX autocomplete in [_govuk](.govuk#L67) function to recommend a directory.
 - Find some extra inspiration by reading http://linux.101hacks.com/
 
 ## License
