@@ -1,3 +1,9 @@
+if [[ $OSTYPE == darwin* ]] ; then
+  export GOVUK_PATH="~/govuk"
+else
+  export GOVUK_PATH="/var/govuk"
+fi;
+
 function replicate {
   if [[ $OSTYPE == darwin* ]] ; then
     echo "You are not inside vagrant to run this command."
@@ -52,11 +58,7 @@ function vmup {
 
 # usage: govuk [TAB][TAB]
 function govuk {
-  if [[ $OSTYPE == darwin* ]] ; then
-    cd ~/govuk/$1
-  else
-    cd /var/govuk/$1
-  fi;
+  builtin cd "$GOVUK_PATH/$1";
 }
 
 # function to autocomplete govuk directory
@@ -66,18 +68,12 @@ _govuk() {
 
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
+  folders=$(ls $GOVUK_PATH)
 
-  if [[ $OSTYPE == darwin* ]] ; then
-    opts=$(ls ~/govuk)
-  else
-    opts=$(dir /var/govuk)
-  fi;
-
-  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  COMPREPLY=( $(compgen -W "${folders}" -- ${cur}) )
   return 0
 }
 complete -F _govuk govuk
-
 
 function development {
   if [[ $OSTYPE == darwin* ]] ; then
