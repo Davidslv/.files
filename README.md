@@ -34,6 +34,7 @@ make a release once I'm happy and sure that the functionality is working.
 
 - Dinamically add github name, user and email to [.gitconfig](.gitconfig).
 - Find some extra inspiration by reading http://linux.101hacks.com/
+- Add option to install [my vim configuration](https://github.com/davidslv/.vim)
 
 ## License
   [MIT](LICENSE)
