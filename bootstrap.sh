@@ -30,3 +30,13 @@ if [[ $OSTYPE == darwin* ]] ; then
     source ~/.osx
   fi;
 fi;
+
+echo ""
+read -p "Would you like to download david's vim configuration? (y/n)" -n 1;
+echo ""
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  git clone git@github.com:Davidslv/.vim.git ~/.vim
+  cd ~/.vim
+  ./setup.sh
+  cd -
+fi;

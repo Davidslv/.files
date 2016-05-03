@@ -33,8 +33,8 @@ make a release once I'm happy and sure that the functionality is working.
 ## Roadmap
 
 - Dinamically add github name, user and email to [.gitconfig](.gitconfig).
+- Add option to download a given vim configuration
 - Find some extra inspiration by reading http://linux.101hacks.com/
-- Add option to install [my vim configuration](https://github.com/davidslv/.vim)
 
 ## License
   [MIT](LICENSE)
