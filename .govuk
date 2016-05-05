@@ -1,7 +1,9 @@
 if [[ $OSTYPE == darwin* ]] ; then
   export GOVUK_PATH="~/govuk"
+  DIR_COMMAND="ls"
 else
   export GOVUK_PATH="/var/govuk"
+  DIR_COMMAND="dir"
 fi;
 
 function replicate {
@@ -68,7 +70,8 @@ _govuk() {
 
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
-  folders=$(ls $GOVUK_PATH)
+
+  folders=$($DIR_COMMAND $GOVUK_PATH)
 
   COMPREPLY=( $(compgen -W "${folders}" -- ${cur}) )
   return 0
