@@ -20,6 +20,13 @@ So I finally decided to follow the dotfiles trend and create one for my own need
   $ ./bootstrap.sh
 ```
 
+## Install your editor configuration
+
+I want to support the installation of any given editor configuration you might have,
+to achieve this all you need to do is to provide a github repo that you would like to be cloned,
+and ensure that you have a `./setup` file with your own setup so that `./bootstrap.sh` can follow
+your installation instructions.
+
 ## Something is broken?
 
 So you followed my instructions and something did go wrong, maybe I pushed
